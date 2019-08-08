@@ -15,7 +15,15 @@ namespace PortalRandkowy.API.Data {
         }
         public async Task<User> Login (string username, string password) 
         {
-        var user = await _context.Users.FirstOrDefaultAsync(x => x.Username == username);    
+            Console.WriteLine("Repository");
+            Console.WriteLine("user " + username);
+            Console.WriteLine("password  " + password);
+        var user = await _context.Users.FirstOrDefaultAsync(x => x.Username == username); 
+      Console.WriteLine("Zwrot ");
+            Console.WriteLine("user " + user.Username);
+            
+
+
          if(user == null)
          return null;
          if(!VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))

@@ -2,44 +2,78 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using PortalRandkowy.API.Data;
+using PortalRandkowy.API.Models;
 
-namespace ivoicewww.API.Controllers
-{
-    [Route("api/[controller]")]
+namespace PortalRandkowy.API.Controllers {
+    // nasza aplikacja bedzie dostepna pod adresem hhtp://localhost:5000/api/Values ( pierwsza czesc nazwy )
+    [Authorize]
+    [Route ("api/[controller]")]
     [ApiController]
-    public class ValuesController : ControllerBase
-    {
+    public class ValuesController : ControllerBase {
+        private readonly DataContext _context;
+
+        public ValuesController (DataContext context) {
+            _context = context;
+
+        }
+
         // GET api/values
+        [AllowAnonymous]
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public async Task<IActionResult> GetValues () 
         {
-            return new string[] { "value1", "value2" };
+        var values = await _context.Values.ToListAsync();
+        return Ok (values);    
         }
 
         // GET api/values/5
-        [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
-        {
-            return "value";
+        [AllowAnonymous]
+        [HttpGet ("{id}")]
+        public async Task<IActionResult> GetValue (int id) {
+            var  Values = await _context.Values.FirstOrDefaultAsync(x => x.Id == id); 
+          return Ok (Values); 
         }
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody] string value)
-        {
+        public async Task<IActionResult>  AddValue ([FromBody] Value value) 
+        { 
+            _context.Add(value);
+            await _context.SaveChangesAsync();
+            return Ok(value);
         }
+
+
 
         // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut ("{id}")]
+        public async Task<IActionResult> EditValue (int id, [FromBody] Value value) 
         {
-        }
+            var data = await _context.Values.FindAsync(id);
+            data.Name = value.Name;
+            _context.Values.Update(data);
+            _context.SaveChanges();
+            return Ok(data);
+
+         }
 
         // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete ("{id}")]
+        public async Task<IActionResult> DeleteValue (int id)
         {
-        }
+            var data = await _context.Values.FindAsync(id);
+            if (data == null)
+            return NoContent();
+
+
+            _context.Values.Remove(data);
+            await _context.SaveChangesAsync();
+            return Ok(data);
+
+         }
     }
 }
