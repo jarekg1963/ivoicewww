@@ -34,9 +34,20 @@ namespace PortalRandkowy.API.Controllers {
                 return BadRequest ("Uzykowsnik o takiej nazwie istenieje");
 
             var userToCreate = new User {
-                Username = userForRegisterDto.Username
+                Username = userForRegisterDto.Username,
+                Mail = userForRegisterDto.Mail,
+                CompanyName = userForRegisterDto.CompanyName,
+                CompanyPhone = userForRegisterDto.CompanyPhone,
+             CompanyCity = userForRegisterDto.CompanyCity   ,
+             CompanyStreetNumber = userForRegisterDto.CompanyStreetNumber,
+             CompanyCountry = userForRegisterDto.CompanyCountry
             };
-            var createdUser = await _repository.Register (userToCreate, userForRegisterDto.Password);
+            // var createdUser = await _repository.Register(userToCreate, userForRegisterDto.Password, userForRegisterDto.Mail , userForRegisterDto.CompanyName,
+            // userForRegisterDto.CompanyPhone, userForRegisterDto.CompanyCity, userForRegisterDto.CompanyStreetNumber, userForRegisterDto.CompanyCountry) ;
+
+
+ var createdUser = await _repository.Register(userToCreate , userForRegisterDto.Password) ;
+
 
             return StatusCode (201);
         }

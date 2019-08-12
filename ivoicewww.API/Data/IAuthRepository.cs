@@ -7,7 +7,12 @@ namespace PortalRandkowy.API.Data
     public interface IAuthRepository 
     {
          Task<User> Login(string username, string password);
-         Task<User> Register(User user, string password); 
+        
+        
+        //  Task<User> Register(User user, string password , string mail , string CompanyName,  string CompanyPhone,  string  CompanyCity ,
+        //  string CompanyStreetNumber , string  CompanyCountry ); 
+
+          Task<User> Register(User user, string password ); 
          Task<bool> UserExist(string username);
  
     }
@@ -15,4 +20,3 @@ namespace PortalRandkowy.API.Data
 }
 
 
- 

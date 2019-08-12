@@ -1,13 +1,17 @@
 export interface User {
     id: number;
-    username: string;
-    mail: string;
-    callCount: number;
-    active: string ;
-    companyName: string;
-    companyPhone: string;
-    companyCity: string;
-    companyStreetNumber: string;
-    companyCountry: string;
+    Password: string;
+    Username: string;
+    Mail: string;
+    CallCount: number;
+    Active: string ;
+    CompanyName: string;
+    CompanyPhone: string;
+    CompanyCity: string;
+    CompanyStreetNumber: string;
+    CompanyCountry: string;
 }
+
+
+
 

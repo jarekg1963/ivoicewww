@@ -31,13 +31,20 @@ namespace PortalRandkowy.API.Data {
         return user;
         }
 
-        public async Task<User> Register (User user, string Password) 
+     
+        // public async Task<User> Register (User user, string Password , string mail , string CompanyName , string CompanyPhone , 
+        // string  CompanyCity, string CompanyStreetNumber, string CompanyCountry) 
+        
+          public async Task<User> Register (User user, string Password  ) 
+        
+        
         {
             byte[] passwordHash, passwordSalt;
             CreatePasswordHashSalt(Password,out passwordHash,out passwordSalt);
        
        user.PasswordHash = passwordHash;
        user.PasswordSalt = passwordSalt;
+
 
            await _context.Users.AddAsync(user);
            await _context.SaveChangesAsync();
