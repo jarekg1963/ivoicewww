@@ -1,4 +1,4 @@
-namespace PortalRandkowy.API.Models
+namespace ivoicewww.API.Models
 {
     public class Value
     {

@@ -1,4 +1,4 @@
-namespace PortalRandkowy.API.Dtos
+namespace ivoicewww.API.Dtos
 
 {
 

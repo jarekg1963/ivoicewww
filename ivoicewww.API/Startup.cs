@@ -13,7 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using PortalRandkowy.API.Data;
+using ivoicewww.API.Data;
 
 namespace ivoicewww.API {
     public class Startup {
@@ -29,6 +29,8 @@ namespace ivoicewww.API {
             services.AddDbContext<DataContext> (x => x.UseSqlite (Configuration.GetConnectionString ("DefaultConnection")));
             services.AddCors ();
             services.AddScoped<IAuthRepository, AuthRepository> ();
+                services.AddScoped<IGenericRepository, GenericRepository> ();
+               services.AddScoped<IUserRepository, UserRepository> ();
             services.AddAuthentication (JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer (options => {
                     options.TokenValidationParameters = new TokenValidationParameters {

@@ -1,0 +1,94 @@
+
+<div class="example-container mat-elevation-z8">
+  <br>
+  <br>
+
+
+
+
+  <div fxLayout="row" fxLayoutAlign="space-evenly center">
+      <button (click)="loadUsers()" class="btn btn-primary btn-lg my-2 my-sm-0 mr-4">Refresh screen </button>
+      <mat-form-field >
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter" >
+        </mat-form-field>
+      </div>
+
+
+
+    <table mat-table [dataSource]="dataSource"  matSort class="mat-elevation-z8">
+
+         <!-- Delete -->
+
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Delete </th>
+      <td mat-cell *matCellDef="let element">
+        <button (click)="kasujTask(element)" mat-button color="warn">Delete</button>
+      </td>
+    </ng-container>
+
+       <!--Edit -->
+
+       <ng-container matColumnDef="edit">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Edit </th>
+        <td mat-cell *matCellDef="let element">
+          <button
+            (click)="editTask(element.id,element.task,element.priority,element.owner,element.category,element.remarks,element.dueDate)"
+            mat-button color="primary">Edit</button>
+        </td>
+      </ng-container>
+
+  <ng-container matColumnDef="id"  >
+    <th mat-header-cell *matHeaderCellDef mat-sort-header > Id </th>
+    <td mat-cell *matCellDef="let element" style="width: 50px;" > {{element.id }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="username">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+    <td mat-cell *matCellDef="let element" style="width: 250px;" > {{element.username}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="companyPhone">
+    <th mat-header-cell *matHeaderCellDef> Company phone </th>
+    <td mat-cell *matCellDef="let element" style="width: 150px;" > {{element.companyPhone}} </td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="callCount" >
+    <th mat-header-cell *matHeaderCellDef > Call count </th>
+    <td mat-cell *matCellDef="let element"  style="width: 50px;" > {{element.callCount}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="companyName">
+    <th mat-header-cell *matHeaderCellDef> Company name </th>
+    <td mat-cell *matCellDef="let element" style="width: 250px;" > {{element.companyName}} </td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="active">
+    <th mat-header-cell *matHeaderCellDef> Active </th>
+    <td mat-cell *matCellDef="let element" style="width: 50px;" > {{element.active}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="companyCity">
+    <th mat-header-cell *matHeaderCellDef> City </th>
+    <td mat-cell *matCellDef="let element" style="width: 250px;" > {{element.companyCity}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="companyStreetNumber">
+    <th mat-header-cell *matHeaderCellDef> Street  </th>
+    <td mat-cell *matCellDef="let element" style="width: 250px;" > {{element.companyStreetNumber}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="companyCountry">
+    <th mat-header-cell *matHeaderCellDef> Country  </th>
+    <td mat-cell *matCellDef="let element" style="width: 250px;" > {{element.companyCountry}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<mat-paginator [pageSizeOptions]="[10, 20]" showFirstLastButtons></mat-paginator>
+
+
+</div>

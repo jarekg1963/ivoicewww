@@ -5,14 +5,14 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using PortalRandkowy.API.Data;
-using PortalRandkowy.API.Dtos;
-using PortalRandkowy.API.Models;
+using ivoicewww.API.Data;
+using ivoicewww.API.Dtos;
+using ivoicewww.API.Models;
 
 
 
 
-namespace PortalRandkowy.API.Controllers {
+namespace ivoicewww.API.Controllers {
     [Route ("api/[controller]")]
     [ApiController]
     public class AuthController : ControllerBase {
@@ -25,7 +25,7 @@ namespace PortalRandkowy.API.Controllers {
         }
 
         [HttpPost ("register")]
-        public async Task<IActionResult> register(UserForRegisterDto userForRegisterDto) {
+        public async Task<IActionResult> register(Dtos.UserForRegisterDto userForRegisterDto) {
 
               
             userForRegisterDto.Username = userForRegisterDto.Username.ToLower ();
@@ -42,8 +42,7 @@ namespace PortalRandkowy.API.Controllers {
              CompanyStreetNumber = userForRegisterDto.CompanyStreetNumber,
              CompanyCountry = userForRegisterDto.CompanyCountry
             };
-            // var createdUser = await _repository.Register(userToCreate, userForRegisterDto.Password, userForRegisterDto.Mail , userForRegisterDto.CompanyName,
-            // userForRegisterDto.CompanyPhone, userForRegisterDto.CompanyCity, userForRegisterDto.CompanyStreetNumber, userForRegisterDto.CompanyCountry) ;
+          
 
 
  var createdUser = await _repository.Register(userToCreate , userForRegisterDto.Password) ;

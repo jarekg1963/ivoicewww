@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using PortalRandkowy.API.Data;
-using PortalRandkowy.API.Models;
+using ivoicewww.API.Data;
+using ivoicewww.API.Models;
 
-namespace PortalRandkowy.API.Controllers {
+namespace ivoicewww.API.Controllers {
     // nasza aplikacja bedzie dostepna pod adresem hhtp://localhost:5000/api/Values ( pierwsza czesc nazwy )
     [Authorize]
     [Route ("api/[controller]")]

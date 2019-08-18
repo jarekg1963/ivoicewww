@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
-
-namespace PortalRandkowy.API.Models {
+namespace ivoicewww.API.Models {
     public class User {
         public int Id { get; set; }
         public string Username { get; set; }

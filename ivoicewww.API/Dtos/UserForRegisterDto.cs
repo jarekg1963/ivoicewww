@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace PortalRandkowy.API.Dtos
+namespace ivoicewww.API.Dtos
 {
     
     public class UserForRegisterDto

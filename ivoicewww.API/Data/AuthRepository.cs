@@ -2,10 +2,10 @@ using System;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using PortalRandkowy.API.Models;
+using ivoicewww.API.Models;
 
-namespace PortalRandkowy.API.Data {
-    public class AuthRepository : IAuthRepository {
+namespace ivoicewww.API.Data {
+    public class AuthRepository: IAuthRepository {
         private readonly DataContext _context;
 
 #region method public
@@ -14,16 +14,9 @@ namespace PortalRandkowy.API.Data {
 
         }
         public async Task<User> Login (string username, string password) 
-        {
-            Console.WriteLine("Repository");
-            Console.WriteLine("user " + username);
-            Console.WriteLine("password  " + password);
+        {      
         var user = await _context.Users.FirstOrDefaultAsync(x => x.Username == username); 
-      Console.WriteLine("Zwrot ");
-            Console.WriteLine("user " + user.Username);
-            
-
-
+    
          if(user == null)
          return null;
          if(!VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
@@ -32,12 +25,8 @@ namespace PortalRandkowy.API.Data {
         }
 
      
-        // public async Task<User> Register (User user, string Password , string mail , string CompanyName , string CompanyPhone , 
-        // string  CompanyCity, string CompanyStreetNumber, string CompanyCountry) 
-        
+    
           public async Task<User> Register (User user, string Password  ) 
-        
-        
         {
             byte[] passwordHash, passwordSalt;
             CreatePasswordHashSalt(Password,out passwordHash,out passwordSalt);

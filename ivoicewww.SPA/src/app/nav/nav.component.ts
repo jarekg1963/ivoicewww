@@ -4,9 +4,7 @@ import { AuthService } from "./../_services/auth.service";
 import { ToastrServiceService } from "../_services/toastrService.service";
 import { MatDialog, MatDialogConfig } from "@angular/material";
 import { MregisterComponent } from "../mregister/mregister.component";
-import { max } from 'rxjs/operators';
-import { Router } from '@angular/router';
-
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-nav",
@@ -15,6 +13,9 @@ import { Router } from '@angular/router';
 })
 export class NavComponent implements OnInit {
   model: any = {};
+  MenuLoginWidoczne = false;
+  przyciskiWidoczne = true;
+
 
   constructor(
     public dialog: MatDialog,
@@ -23,14 +24,15 @@ export class NavComponent implements OnInit {
     private router: Router
   ) {}
 
-  MenuLoginWidoczne = false;
-  przyciskiWidoczne = true;
+
 
   password: string;
 
   user: User;
 
-  ngOnInit() {}
+  ngOnInit() {
+
+  }
 
   login() {
     console.log("model pass  " + this.model.password);
@@ -49,12 +51,11 @@ export class NavComponent implements OnInit {
   loggedIn() {
     this.przyciskiWidoczne = true;
     return this.authService.logedIn();
-
   }
 
   logout() {
     localStorage.removeItem("token");
-    this.router.navigate(['/home']);
+    this.router.navigate(["/home"]);
     this.MenuLoginWidoczne = false;
     this.toastr.showSuccess("Wylogowano ");
   }
@@ -65,13 +66,11 @@ export class NavComponent implements OnInit {
 
   openDialog() {
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.width = '850px';
+    dialogConfig.width = "850px";
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.data = {};
 
     const dialogRef = this.dialog.open(MregisterComponent, dialogConfig);
-
-
   }
 }

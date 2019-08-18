@@ -6,7 +6,7 @@ import { AuthService } from './_services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BsDropdownModule, TabsModule } from 'ngx-bootstrap';
+import { BsDropdownModule,  } from 'ngx-bootstrap';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -18,6 +18,11 @@ import { MregisterComponent } from './mregister/mregister.component';
 import { HomeComponent } from './home/home.component';
 import { TestivoiceComponent } from './testivoice/testivoice.component';
 import { AuthGuard } from './_guards/auth.guard';
+import { UserslistComponent } from './userslist/userslist.component';
+import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
+import { ConfirmationDialogService } from './confirmation-dialog/confirmation-dialog.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 
 
@@ -33,7 +38,9 @@ export function tokenGetter(){
     RegisterComponent,
     MregisterComponent,
     HomeComponent,
-    TestivoiceComponent
+    TestivoiceComponent,
+    UserslistComponent,
+    ConfirmationDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -42,6 +49,7 @@ export function tokenGetter(){
     AppRoutingModule,
     MaterialModule,
     ToastrModule.forRoot(),
+    NgbModule ,
     BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
     JwtModule.forRoot({
@@ -53,8 +61,8 @@ export function tokenGetter(){
       }
     ),
   ],
-  providers: [  AuthService, ToastrService, AuthGuard],
+  providers: [  AuthService, ToastrService, AuthGuard, ConfirmationDialogService],
   bootstrap: [AppComponent],
-  entryComponents: [MregisterComponent]
+  entryComponents: [MregisterComponent, ConfirmationDialogComponent]
 })
 export class AppModule { }
