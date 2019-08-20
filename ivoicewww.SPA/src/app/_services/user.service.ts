@@ -13,9 +13,11 @@ export class UserService {
 
 constructor(private http: HttpClient) { }
 
-// getUsers() {
-//  return this.http.get('http://localhost:5000/api/users');
-// }
+
+
+getUser(id: number): Observable<User[]>{
+  return this.http.get<User[]>(this.baseUrl + 'users/' + id);
+}
 
 
 getUsers(): Observable<User[]>{
@@ -26,5 +28,8 @@ DeleteUser(id: number) {
   return this.http.delete(this.baseUrl + 'users/' + id);
 }
 
+UpdateUser(id: number, user: User) {
+  return this.http.put(this.baseUrl + 'users/' + id , user);
+}
 
 }

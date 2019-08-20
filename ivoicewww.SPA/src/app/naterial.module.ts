@@ -2,10 +2,15 @@
 
 import { NgModule } from '@angular/core';
 
-import { MatDialogModule, MatFormFieldModule, MatButtonModule, MatInputModule, MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
+import { MatDialogModule, MatFormFieldModule, MatButtonModule, MatInputModule,
+  MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
+import {MatGridListModule} from '@angular/material/grid-list';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import {MatCardModule} from '@angular/material/card';
+
 
 @NgModule({
 
@@ -16,7 +21,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatPaginatorModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatGridListModule,
+    MatCheckboxModule,
+    MatCardModule
+
+
   ],
   exports: [FormsModule,
     MatDialogModule,
@@ -28,7 +38,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
      MatPaginatorModule,
      MatTableModule,
      MatPaginatorModule,
-     MatSortModule
+     MatSortModule,
+     MatGridListModule,
+     MatCheckboxModule,
+     MatCardModule
+
+
+
   ]
 })
 export class MaterialModule {}

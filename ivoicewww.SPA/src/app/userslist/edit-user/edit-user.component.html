@@ -1,0 +1,183 @@
+
+ <mat-card-header>
+    <mat-card-title >Edit user</mat-card-title>
+
+
+ </mat-card-header>
+
+<mat-grid-list class="glowna" cols="12"  >
+
+  <mat-grid-tile
+      [colspan]="2"
+      [rowspan]="1"
+      >
+      <label for="companyPhone" >User name </label>
+  </mat-grid-tile>
+
+  <mat-grid-tile
+      [colspan]="4"
+      [rowspan]="1"
+      >
+      <input type="text" class="form-control" placeholder="User name" required name="username" id="username"
+      [(ngModel)]="data.username" #username="ngModel">
+  </mat-grid-tile>
+
+
+  <mat-grid-tile
+      [colspan]="2"
+      [rowspan]="1"
+      >
+      <label for="companyPhone" >Comapany phone </label>
+  </mat-grid-tile>
+
+  <mat-grid-tile
+      [colspan]="4"
+      [rowspan]="1"
+      >
+      <input type="text" class="form-control" placeholder="Company phone" required name="companyPhone" id="companyPhone"
+      [(ngModel)]="data.companyPhone" #companyPhone="ngModel">
+  </mat-grid-tile>
+
+
+  <mat-grid-tile
+  [colspan]="2"
+  [rowspan]="1"
+ >
+ <label for="companyPhone" >Mail </label>
+</mat-grid-tile>
+
+<mat-grid-tile
+  [colspan]="4"
+  [rowspan]="1"
+  >
+  <input type="text" class="form-control" placeholder="Mail" required name="mail" id="mail"
+  [(ngModel)]="data.mail" #mail="ngModel">
+</mat-grid-tile>
+
+<mat-grid-tile
+[colspan]="2"
+[rowspan]="1"
+>
+Company name
+</mat-grid-tile>
+
+<mat-grid-tile
+[colspan]="4"
+[rowspan]="1"
+>
+<input type="text" class="form-control" placeholder="Company name" required name="companyName" id="companyName"
+  [(ngModel)]="data.companyName" #companyName="ngModel">
+</mat-grid-tile>
+
+
+<mat-grid-tile
+[colspan]="2"
+[rowspan]="1"
+>
+Company city
+</mat-grid-tile>
+
+<mat-grid-tile
+[colspan]="4"
+[rowspan]="1"
+>
+<input type="text" class="form-control" placeholder="Company city" required name="companyCity" id="companyCity"
+  [(ngModel)]="data.companyCity" #companyCity="ngModel">
+
+</mat-grid-tile>
+
+<mat-grid-tile
+[colspan]="2"
+[rowspan]="1">
+Street number
+</mat-grid-tile>
+
+<mat-grid-tile
+[colspan]="4"
+[rowspan]="1"
+>
+<input type="text" class="form-control" placeholder="Company street nr" required name="companyStreetNumber" id="companyStreetNumber"
+  [(ngModel)]="data.companyStreetNumber" #companyCity="ngModel">
+</mat-grid-tile>
+
+
+<mat-grid-tile
+[colspan]="2"
+[rowspan]="1">
+Country
+</mat-grid-tile>
+
+<mat-grid-tile
+[colspan]="4"
+[rowspan]="1"
+>
+<input type="text" class="form-control" placeholder="Company country" required name="companyCountry" id="companyCountry"
+  [(ngModel)]="data.companyCountry" #companyCountry="ngModel">
+</mat-grid-tile>
+
+</mat-grid-list>
+
+<hr>
+
+
+<mat-grid-list class="drugaTabela" cols="12">
+<mat-grid-tile
+[colspan]="2"
+[rowspan]="1" >
+Active
+</mat-grid-tile>
+
+<mat-grid-tile
+[colspan]="2"
+[rowspan]="1"
+>
+
+
+<mat-checkbox class="form-control" name="active" id="active"  [(ngModel)]="data.active" #active="ngModel" ></mat-checkbox>
+</mat-grid-tile>
+
+
+
+    <mat-grid-tile
+    [colspan]="2"
+    [rowspan]="1">
+   Calls count
+    </mat-grid-tile>
+
+    <mat-grid-tile
+    [colspan]="2"
+    [rowspan]="1"
+    >
+    <input type="text" class="form-control" placeholder="Call count" required name="callCount" id="callCount"
+      [(ngModel)]="data.callCount" #callCount="ngModel">
+    </mat-grid-tile>
+
+
+
+</mat-grid-list>
+
+
+
+
+<mat-grid-list cols="12">
+
+
+    <mat-grid-tile
+    [colspan]="2"
+    [rowspan]="1">
+
+<mat-dialog-actions>
+  <button  mat-raised-button (click)="closeMe()">Close</button>
+</mat-dialog-actions>
+
+</mat-grid-tile>
+
+<mat-grid-tile
+[colspan]="2"
+[rowspan]="1">
+<mat-dialog-actions>
+    <button  mat-raised-button (click)="Save()">Save</button>
+  </mat-dialog-actions>
+
+</mat-grid-tile>
+</mat-grid-list>

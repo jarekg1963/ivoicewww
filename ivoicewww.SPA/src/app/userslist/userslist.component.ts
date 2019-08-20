@@ -1,13 +1,20 @@
 import { element } from "protractor";
 import { Component, OnInit, ViewChild } from "@angular/core";
-import { MatTableDataSource, MatSort, MatPaginator } from "@angular/material";
+import {
+  MatTableDataSource,
+  MatSort,
+  MatPaginator,
+  MatDialogConfig,
+  MatDialog
+} from "@angular/material";
 import { User } from "../_models/user";
 import { UserService } from "../_services/user.service";
 import { ActivatedRoute } from "@angular/router";
 import { ToastrServiceService } from "../_services/toastrService.service";
 import { SelectionModel } from "@angular/cdk/collections";
 import { ConfirmationDialogService } from "../confirmation-dialog/confirmation-dialog.service";
-import { CompileShallowModuleMetadata } from "@angular/compiler";
+
+import { EditUserComponent } from "./edit-user/edit-user.component";
 
 @Component({
   selector: "app-userslist",
@@ -41,7 +48,8 @@ export class UserslistComponent implements OnInit {
     private userService: UserService,
     private route: ActivatedRoute,
     private toastr: ToastrServiceService,
-    private confirmationDialogService: ConfirmationDialogService
+    private confirmationDialogService: ConfirmationDialogService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit() {
@@ -66,7 +74,11 @@ export class UserslistComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  kasujTask(user: User) {
+  kasujUsera(user: User) {
+    console.log(user.id);
+    if (user.id === 31){
+      return this.toastr.showError("Not allowed edit or delete admin ");
+    }
     this.confirmationDialogService
       .confirm("Please confirm..", "Do you really want to ... ?")
       .then(confirmed => {
@@ -75,6 +87,47 @@ export class UserslistComponent implements OnInit {
             this.users = this.users.filter(u => u !== user);
           });
         }
+      });
+  }
+
+  editUsera(user: User) {
+    const id = user.id;
+    const username = user.username;
+    const companyPhone = user.companyPhone;
+    const companyName = user.companyName;
+    const companyCity = user.companyCity;
+    const active = user.active;
+    const callCount = user.callCount;
+    const companyStreetNumber = user.companyStreetNumber;
+    const companyCountry = user.companyCountry;
+    const mail = user.mail;
+    const passwordHash = user.passwordHash;
+    const passwordSalt = user.passwordSalt;
+
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.autoFocus = true;
+    dialogConfig.disableClose = true;
+    dialogConfig.width = "75%";
+    dialogConfig.data = {
+      id,
+      username,
+      companyPhone,
+      mail,
+      companyName,
+      companyCity,
+      companyStreetNumber,
+      companyCountry,
+      active,
+      callCount,
+      passwordHash,
+      passwordSalt
+    };
+
+    this.dialog
+      .open(EditUserComponent, dialogConfig)
+      .afterClosed()
+      .subscribe(res => {
+        this.loadUsers();
       });
   }
 }

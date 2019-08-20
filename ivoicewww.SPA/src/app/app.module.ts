@@ -1,7 +1,7 @@
 import { MaterialModule } from './naterial.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './_services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
@@ -22,6 +22,8 @@ import { UserslistComponent } from './userslist/userslist.component';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 import { ConfirmationDialogService } from './confirmation-dialog/confirmation-dialog.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { EditUserComponent } from './userslist/edit-user/edit-user.component';
+import { EditsamComponent } from './userslist/editsam/editsam.component';
 
 
 
@@ -40,7 +42,9 @@ export function tokenGetter(){
     HomeComponent,
     TestivoiceComponent,
     UserslistComponent,
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    EditUserComponent,
+    EditsamComponent
   ],
   imports: [
     BrowserModule,
@@ -51,6 +55,8 @@ export function tokenGetter(){
     ToastrModule.forRoot(),
     NgbModule ,
     BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
     BsDropdownModule.forRoot(),
     JwtModule.forRoot({
       config: {
@@ -63,6 +69,6 @@ export function tokenGetter(){
   ],
   providers: [  AuthService, ToastrService, AuthGuard, ConfirmationDialogService],
   bootstrap: [AppComponent],
-  entryComponents: [MregisterComponent, ConfirmationDialogComponent]
+  entryComponents: [MregisterComponent, ConfirmationDialogComponent, EditUserComponent]
 })
 export class AppModule { }

@@ -31,7 +31,7 @@ export class MregisterComponent implements OnInit {
 
   onYesClick() {
 
-      this.user.Active = '0';
+      this.user.active = '0';
 
 
       this.authService.registeracja(this.user).subscribe(() => {

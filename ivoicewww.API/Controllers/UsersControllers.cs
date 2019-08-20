@@ -47,5 +47,19 @@ namespace ivoicewww.API.Controllers {
 
          }
 
+[HttpPut ("{id}")]
+       public async Task<ActionResult<User>> UpdateUser (int id, [FromBody]User user) {
+          
+        //    var userfind = await _repo.GetUser(id);
+        //     if (userfind == null) {
+        //         return NotFound ();
+        //     }
+
+                await _repo.UpdateUser(id,user);
+             return user;
+
+         }
+
+
     }
 }

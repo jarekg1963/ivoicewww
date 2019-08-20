@@ -5,6 +5,7 @@ import { ToastrServiceService } from "../_services/toastrService.service";
 import { MatDialog, MatDialogConfig } from "@angular/material";
 import { MregisterComponent } from "../mregister/mregister.component";
 import { Router } from "@angular/router";
+import { UserService } from '../_services/user.service';
 
 @Component({
   selector: "app-nav",
@@ -19,28 +20,35 @@ export class NavComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
+    public userservice: UserService,
     private authService: AuthService,
     private toastr: ToastrServiceService,
     private router: Router
   ) {}
 
 
+  //data: any;
 
   password: string;
+  userLoged: any;
+  user: any;
 
-  user: User;
 
   ngOnInit() {
-
   }
 
   login() {
     console.log("model pass  " + this.model.password);
     this.authService.login(this.model).subscribe(
-      next => {
+      res => {
         this.toastr.showSuccess("Zalogowano pomyślnie ");
         this.MenuLoginWidoczne = true;
         this.przyciskiWidoczne = false;
+        this.userLoged = res;
+        this.userservice.getUser(this.userLoged.nameid).subscribe(res1 =>{
+         this.user = res1;
+       });
+
       },
       error => {
         this.toastr.showError("Błąd logowania ");

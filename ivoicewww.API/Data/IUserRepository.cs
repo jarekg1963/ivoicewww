@@ -11,6 +11,8 @@ namespace ivoicewww.API.Data
         Task<User> GetUser(int id);
         Task<User> DeleteUser(int id) ;
 
+Task<User> UpdateUser(int id , User user ) ;
+
     }
 }
 

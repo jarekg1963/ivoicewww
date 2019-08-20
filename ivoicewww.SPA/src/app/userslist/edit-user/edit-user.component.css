@@ -1,0 +1,11 @@
+.mat-grid-list.glowna{
+  background-color: rgb(220, 227, 230);
+  height: 10px;
+}
+
+.mat-grid-list.drugaTabela{
+  height:"50px";
+  background-color: rgb(230, 220, 228);
+}
+
+

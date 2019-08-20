@@ -36,6 +36,20 @@ namespace ivoicewww.API.Data {
 
         }
 
+  public async Task<User> UpdateUser(int id, User user) {
+            // var userfind = await _context.Users.FindAsync(id);
+            // if (userfind == null) {
+            //     Console.WriteLine (nameof (Index));
+              
+            // }
+            _context.Users.Update (user);
+             await _context.SaveChangesAsync();
+      return user;
+            
+
+        }
+
+
     }
 
 }
