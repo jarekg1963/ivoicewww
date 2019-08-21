@@ -54,9 +54,8 @@ export class EditUserComponent implements OnInit {
 
 
   Save() {
-
-
-    this.userService.UpdateUser(this.data.id, this.data).subscribe(res => {});
+    this.userService.UpdateUser(this.data.id, this.data).subscribe(res => {
+    });
 
     this.dialogRef.close();
   }

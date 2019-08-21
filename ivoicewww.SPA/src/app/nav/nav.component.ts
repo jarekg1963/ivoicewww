@@ -6,6 +6,7 @@ import { MatDialog, MatDialogConfig } from "@angular/material";
 import { MregisterComponent } from "../mregister/mregister.component";
 import { Router } from "@angular/router";
 import { UserService } from '../_services/user.service';
+import { EditUserComponent } from '../userslist/edit-user/edit-user.component';
 
 @Component({
   selector: "app-nav",
@@ -81,4 +82,47 @@ export class NavComponent implements OnInit {
 
     const dialogRef = this.dialog.open(MregisterComponent, dialogConfig);
   }
-}
+
+  OpenEditUsera() {
+    console.log(this.user);
+    const id = this.user.id;
+    const username = this.user.username;
+    const companyPhone = this.user.companyPhone;
+    const companyName = this.user.companyName;
+    const companyCity = this.user.companyCity;
+    const active = this.user.active;
+    const callCount = this.user.callCount;
+    const companyStreetNumber = this.user.companyStreetNumber;
+    const companyCountry = this.user.companyCountry;
+    const mail = this.user.mail;
+    const passwordHash = this.user.passwordHash;
+    const passwordSalt = this.user.passwordSalt;
+
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.autoFocus = true;
+    dialogConfig.disableClose = true;
+    dialogConfig.width = "75%";
+    dialogConfig.data = {
+      id,
+      username,
+      companyPhone,
+      mail,
+      companyName,
+      companyCity,
+      companyStreetNumber,
+      companyCountry,
+      active,
+      callCount,
+      passwordHash,
+      passwordSalt
+    };
+
+    this.dialog
+      .open(EditUserComponent, dialogConfig)
+      .afterClosed()
+      .subscribe(res => {
+
+      });
+  }
+  }
+
